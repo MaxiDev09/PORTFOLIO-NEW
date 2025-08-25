@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
+
+
+  <title>
+    MaxiDev09 | Discord Bot Engineer & Server Management Specialist
+  </title>
+
+  <meta name="description" content="Add small description of yourslef.">
+  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
+  <meta name="keywords" content="Python, Discord.py, Lua, JavaScript, HTML, CSS, Tailwind" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+  <!-- ***** Header ***** -->
+
+  <header class="header" role="banner" id="top">
+    <div class="row">
+      <nav class="nav" role="navigation">
+        <ul class="nav__items">
+          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+          <li class="nav__item"><a href="#clients" class="nav__link">Clients</a></li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">About</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__text-box row">
+      <div class="header__text">
+        <h1 class="heading-primary">
+          <!-- Replace the following name with your name -->
+          <span>MaxiDev09</span>
+        </h1>
+        <!-- Put a small paragraph about yourself -->
+        <p>A Discord Bot Engineer & Server Management Specialist based in Germany.</p>
+        <a href="#contact" class="btn btn--pink">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+
+    <!-- ***** Work ***** -->
+
+    <section class="work" id="work">
+      <div class="row">
+        <h2>My Work</h2>
+        <div class="work__boxes">
+
+          <!-- Each div with the work__box class is a project. -->
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Portfolio Website</h3>
+              <p>
+                 for a leading tech company, featuring responsive design and smooth animations.
+              </p>
+              <ul class="work__list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Netlify</li>
+              </ul>
+
+              <div class="work__links">
+                <a href="https://vortexdevelopment.xyz" target="_blank" class="link__text">
+                  Visit Site <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/project-1.png" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Discord Server</h3>
+              <p>
+                A vibrant Roblox community Discord server, featuring advanced custom bots, automated moderation tools, and interactive features. This project includes one of my earliest and most successful Discord bots, enhancing user engagement and server management.
+              </p>
+              <ul class="work__list">
+                <li>Discord</li>
+                <li>Python</li>
+                <li><Discord class="py">Discord.py</Discord></li>
+                <li>MongoDB</li>
+              </ul>
+
+              <div class="work__links">
+                <a href="https://discord.gg/qWjJwUg8" class="link__text">
+                  Visit Site <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__images-row">
+              <img src="./images/bot.png" class="work__image work__image--small" alt="Discord Bot" tabindex="0" />
+              <img src="./images/modlogs.png" class="work__image work__image--small" alt="Mod Logs" tabindex="0" />
+              <img src="./images/server.png" class="work__image work__image--small" alt="Server" tabindex="0" />
+            </div>
+            <style>
+              .work__images-row {
+                display: flex;
+                gap: 16px;
+                justify-content: flex-start;
+                align-items: center;
+                margin-top: 12px;
+                margin-bottom: 8px;
+              }
+              .work__image--small {
+                width: 90px;
+                height: 90px;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+                cursor: pointer;
+                background: #fff;
+                border: 2px solid #f3f3f3;
+                position: relative;
+                z-index: 1;
+              }
+              .work__image--small.active,
+              .work__image--small:active {
+                transform: scale(2.1);
+                z-index: 10;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+                border-color: #ff4b7d;
+                object-fit: contain;
+                background: #fff;
+              }
+              /* Overlay for enlarged image */
+              .work__image-overlay {
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+              }
+              .work__image-overlay img {
+                max-width: 90vw;
+                max-height: 90vh;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+                background: #fff;
+              }
+            </style>
+            <script>
+              // Remove previous overlay if exists
+              function removeOverlay() {
+                const overlay = document.querySelector('.work__image-overlay');
+                if (overlay) overlay.remove();
+                document.querySelectorAll('.work__image--small').forEach(i => i.classList.remove('active'));
+              }
+
+              document.querySelectorAll('.work__image--small').forEach(img => {
+                img.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  removeOverlay();
+                  this.classList.add('active');
+                  // Create overlay
+                  const overlay = document.createElement('div');
+                  overlay.className = 'work__image-overlay';
+                  const bigImg = document.createElement('img');
+                  bigImg.src = this.src;
+                  bigImg.alt = this.alt;
+                  overlay.appendChild(bigImg);
+                  document.body.appendChild(overlay);
+                  overlay.addEventListener('click', removeOverlay);
+                  bigImg.addEventListener('click', function(ev) { ev.stopPropagation(); });
+                });
+                img.addEventListener('keydown', function(e) {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                  }
+                });
+              });
+
+              document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') removeOverlay();
+              });
+              document.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('work__image--small')) {
+                  removeOverlay();
+                }
+              });
+            </script>  }
+            </style>
+            <script>
+              document.querySelectorAll('.work__image--small').forEach(img => {
+                img.addEventListener('click', function() {
+                  document.querySelectorAll('.work__image--small').forEach(i => i.classList.remove('active'));
+                  this.classList.add('active');
+                });
+                img.addEventListener('blur', function() {
+                  this.classList.remove('active');
+                });
+              });
+              // Optional: click outside to close
+              document.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('work__image--small')) {
+                  document.querySelectorAll('.work__image--small').forEach(i => i.classList.remove('active'));
+                }
+              });
+            </script>
+            </div>
+          </div>
+          <style>
+            .work__box + .work__box {
+              margin-top: 32px;
+              padding-top: 16px;
+              border-top: 1px solid #f3f3f3;
+            }
+          </style>
+          <div class="work__box">
+            <div class="work__text">
+              <h3>British Army Game</h3>
+              <p>
+                An immersive multiplayer game set in the British Army. Almost everything that is related to scripting was made by me. 
+              </p>
+              <ul class="work__list">
+                <li>Lua</li>
+                <li>Roblox</li>
+                <li>Roblox Studio</li>
+                <li>Made with love ♥️</li>
+              </ul>
+
+              <div class="work__links">
+                <a href="https://www.roblox.com/games/75987925389067/NEW-V1-British-Army-Academy" class="link__text">
+                  Test it out here! <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/baa.png" class="work__image" alt="Project 3" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** Clients ***** -->
+
+    <section class="client" id="clients">
+      <div class="row">
+        <h2>Clients</h2>
+        <div class="client__logos" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: flex-start;">
+          <div class="client__item" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="./images/fff.png" class="client__logo" alt="Client Logo" style="filter: none; max-width: 100px;"/>
+            <div class="client__links" style="margin-top: 8px;">
+              <a href="https://discord.gg/Fz5BYvy9" class="btn" id="server-link-placeholder-fff">Server link</a>
+            </div>
+          </div>
+          <div class="client__item" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="./images/mdod.png" class="client__logo" alt="Client Logo" style="filter: none; max-width: 100px;"/>
+            <div class="client__links" style="margin-top: 8px;">
+              <a href="https://discord.gg/qWjJwUg8" class="btn" id="server-link-placeholder-mdod">Server link</a>
+            </div>
+          </div>
+          <div class="client__item" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="./images/hhh.png" class="client__logo" alt="Client Logo" style="filter: none; max-width: 100px;"/>
+            <div class="client__links" style="margin-top: 8px;">
+              <a href="https://discord.gg/7sZC6w7u" class="btn" id="server-link-placeholder-hhh">Server link</a>
+            </div>
+          </div>
+          <div class="client__item" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="./images/ji.png" class="client__logo" alt="Client Logo" style="filter: none; max-width: 100px;"/>
+            <div class="client__links" style="margin-top: 8px;">
+              <a href="https://discord.gg/jVR93Tf3" class="btn" id="server-link-placeholder-ji">Server link</a>
+            </div>
+          </div>
+          <div class="client__item" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="./images/zr.png" class="client__logo" alt="Client Logo" style="filter: none; max-width: 100px;"/>
+            <div class="client__links" style="margin-top: 8px;">
+              <a href="https://discord.gg/Q4QRncnv" class="btn" id="server-link-placeholder-zr">Server link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** About ***** -->
+
+    <section class="about" id="about">
+      <div class="row">
+        <h2>About Me</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <!-- Replace the below paragraph with info about yourself -->
+            My name is MaxiDev09, or Maxi. I am a 16-year-old Discord bot engineer and server management specialist based in Germany. This is my primary job, and as a secondary focus, I also do Roblox scripting and a bit of UI designing.  </p>
+            <!-- Provide a link to your resume -->
+            <a href="#" class="btn">My Resume</a>
+          </div>
+
+          <div class="about__photo-container">
+            <!-- Add a nice photo of yourself -->
+            <img class="about__photo" src="./images/b121c02ecb8c3387369b46d3eacb7af5.webp" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ***** Contact ***** -->
+
+  <section class="contact" id="contact">
+    <div class="row">
+      <h2>Get in Touch</h2>
+      <div class="contact__info">
+        <p>
+          Are you interested in working together? Feel free to reach out to me via email.
+        </p>
+        <!-- Replace the email with yours -->
+        <a href="mailto:fakemaxi1205@gmail.com" class="btn">fakemaxi1205@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ***** Footer ***** -->
+
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <!-- Update the links to point to your accounts -->
+      <ul class="footer__social-links">
+        <li class="footer__social-link-item">
+          <a href="https://twitter.com/maxidev09/" title="Link to Twitter Profile">
+            <img src="./images/twitter.svg" class="footer__social-image" alt="Twitter">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://github.com/maxidev09/" title="Link to Github Profile">
+            <img src="./images/github.svg" class="footer__social-image" alt="Github">
+          </a>
+        </li>
+        </li>
+        </li>
+      </ul>
+
+      <!-- If you give me some credit by keeping the below paragraph, will be huge for me 😊 Thanks. -->
+      <p>
+        &copy; 2025 - <a href="https://maxidev09.com" class="link">MaxiDev09</a>.
+      </p>
+
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" title="Back to Top">
+    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
+  </a>
+  <script src="./index.js"></script>
+</body>
+
+</html>
